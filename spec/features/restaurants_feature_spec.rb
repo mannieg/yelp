@@ -11,6 +11,17 @@ feature 'restaurants' do
     end
   end
 
+  context 'creating restaurants' do
+    scenario 'prompts user to fill out a form, then displays the new restaurant' do
+      visit '/restaurants'
+      click_link 'Add a restaurant'
+      fill_in 'Name', with: 'KFC'
+      click_button 'Create Restaurant'
+      expect(page).to have_content 'KFC'
+      expect(current_path).to eq '/restaurants'
+    end
+  end
+
   context 'no restaurants have been added' do
     scenario 'should display a prompt to add a restaurant' do
       visit '/restaurants'
