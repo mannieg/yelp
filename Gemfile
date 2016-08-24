@@ -31,6 +31,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+  gem 'devise'
+  gem 'omniauth-facebook'
 
 group :test do
 
@@ -42,7 +44,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'rspec-collection_matchers'
-  gem 'devise'
+  gem 'dotenv-rails'
+
 end
 
 group :development do
