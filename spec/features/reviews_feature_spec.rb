@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature 'reviews' do
   before do
     Restaurant.create(name: 'KFC')
