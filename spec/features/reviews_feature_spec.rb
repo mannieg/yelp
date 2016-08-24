@@ -4,6 +4,7 @@ feature 'reviews' do
   end
 
   scenario 'allows users to leave a review using a form' do
+    sign_up
     visit '/restaurants'
     click_link 'Review KFC'
     fill_in 'Thoughts', with:('so so')
