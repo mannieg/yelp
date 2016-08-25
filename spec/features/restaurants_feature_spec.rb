@@ -5,7 +5,7 @@ feature 'restaurants' do
 
     scenario 'removes a restaurant when clicks delete' do
       sign_up
-      visit '/restaurants'
+      visit '/'
       click_link 'Delete KFC'
       expect(page).not_to have_content 'KFC'
       expect(page).to have_content 'Restaurant deleted successfully'
@@ -14,7 +14,7 @@ feature 'restaurants' do
 
   context 'not signed in' do
     scenario 'cannot create restaurant' do
-      visit '/restaurants'
+      visit '/'
       click_link 'Add a restaurant'
       expect(page).not_to have_xpath '//*[@id="new_restaurant"]'
     end
