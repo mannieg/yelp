@@ -72,6 +72,16 @@ feature 'restaurants' do
   context 'creating restaurants' do
     before { sign_up }
 
+    scenario 'can upload an image and is correctly displayed with listing' do
+      visit '/restaurants'
+      click_link 'Add a restaurant'
+      fill_in 'Name', with: 'Nandos'
+      fill_in 'Description', with: 'Some good food at this place :)'
+      attach_file('restaurant_image', "#{Dir.pwd}/spec/features/test_images/nandos.jpg")
+      click_button 'Create Restaurant'
+      expect(page).to have_xpath '//*[@id="Nandos"]/span[1]/img'
+    end
+
     scenario 'prompts user to fill out a form, then displays the new restaruant' do
       visit '/restaurants'
       click_link 'Add a restaurant'

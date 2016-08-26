@@ -3,6 +3,7 @@
     .restaurant{:id => "#{restaurant.name}"}
       %h2
         = link_to restaurant.name, restaurant_path(restaurant)
+      %span= image_tag restaurant.image.url(:thumb)
       %span= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant)
       %span= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete
       %span= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant)
