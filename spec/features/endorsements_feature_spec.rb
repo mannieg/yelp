@@ -1,5 +1,3 @@
-require 'byebug'
-
 feature 'endorsing reviews' do
 
   context 'Reviews have been left' do
