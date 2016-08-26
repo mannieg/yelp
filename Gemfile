@@ -32,7 +32,6 @@ gem 'paperclip'
 group :development, :test do
   gem 'byebug'
   gem 'dotenv-rails'
-  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -43,6 +42,8 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'shoulda-matchers'
   gem 'rspec-collection_matchers'
   gem 'database_cleaner'
+  gem 'poltergeist'
 end
