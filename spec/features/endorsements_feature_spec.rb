@@ -19,7 +19,7 @@ feature 'endorsing reviews' do
       mcdonalds.reviews.create(rating: 4, thoughts: 'Drive through is great!')
       visit '/restaurants'
       within("//div[@id='McDonalds']") do
-        2.times { click_link "endorse-btn-3" }
+        2.times { click_link "Endorse Review" }
       end
       expect(page).to have_content '2 endorsement'
     end
