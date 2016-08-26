@@ -7,6 +7,7 @@ feature 'endorsing reviews' do
     end
 
     scenario 'a user can endorse a review, which updates the endorsement count', js: true do
+      sign_up
       visit '/'
       click_link 'Endorse Review'
       expect(page).to have_content '1 endorsement'
@@ -15,6 +16,7 @@ feature 'endorsing reviews' do
     scenario 'correct endorsement count is displayed for each review', js: true do
       mcdonalds = Restaurant.create(name: 'McDonalds')
       mcdonalds.reviews.create(rating: 4, thoughts: 'Drive through is great!')
+      sign_up
       visit '/restaurants'
       within(:css, "div#McDonalds") do
         2.times { click_link "Endorse Review"; sleep 1 }
@@ -24,6 +26,7 @@ feature 'endorsing reviews' do
   end
 
   scenario 'cannot leave an endorsement if no reviews', js: true do
+    sign_up
     visit '/'
     expect(page).not_to have_link 'Endorse Review'
   end

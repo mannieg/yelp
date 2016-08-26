@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  has_many :restaurants
+  include WithUserAssociationExtension
+  
+  has_many :restaurants, -> { extending WithUserAssociationExtension },
+            dependent: :destroy
   has_many :reviews
   has_many :reviewed_restaurants, through: :reviews, source: :restaurant
 
