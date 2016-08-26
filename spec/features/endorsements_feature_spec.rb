@@ -14,22 +14,15 @@ feature 'endorsing reviews' do
       expect(page).to have_content '1 endorsement'
     end
 
-    # scenario 'correct endorsement count is displayed for each review' do
-    #   mcdonalds = Restaurant.create(name: 'McDonalds')
-    #   mcdonalds.reviews.create(rating: 4, thoughts: 'Drive through is great!')
-    #   visit '/'
-    #   within("//div[@id='McDonalds']") do
-    #     click_link "endorse-btn-3"
-    #     click_link "endorse-btn-3"
-    #     expect(page).to have_content '1 endorsement'
-    #   end
-    #   within("//div[@id='KFC']") do
-    #     click_link "endorse-btn-2"
-    #     click_link "endorse-btn-2"
-    #     sleep(2)
-    #     expect(page).to have_content '2 endorsement'
-    #   end
-    # end
+    scenario 'correct endorsement count is displayed for each review' do
+      mcdonalds = Restaurant.create(name: 'McDonalds')
+      mcdonalds.reviews.create(rating: 4, thoughts: 'Drive through is great!')
+      visit '/restaurants'
+      within("//div[@id='McDonalds']") do
+        2.times { click_link "endorse-btn-3" }
+      end
+      expect(page).to have_content '2 endorsement'
+    end
   end
 
   scenario 'cannot leave an endorsement if no reviews' do
